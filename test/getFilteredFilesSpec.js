@@ -6,7 +6,7 @@ var _ = require('highland');
 var expect = require('chai').expect;
 var getFilteredFiles = require('../lib/getFilteredFiles.js');
 
-describe("index", function() {
+describe("getFilteredFiles", function() {
 
   it('returns a Highland stream', function(done) {
     var actual = getFilteredFiles(testOptions({}));
