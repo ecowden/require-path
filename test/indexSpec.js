@@ -4,7 +4,7 @@ var join = path.join;
 var fixturePath = join(__dirname, 'fixtures');
 var _ = require('highland');
 var expect = require('chai').expect;
-var scoop = require('../lib/index.js');
+var requirePath = require('../lib/index.js');
 
 describe("index", function() {
 
@@ -15,7 +15,7 @@ describe("index", function() {
   }
 
   it('returns a promise that resolves to an object', function(done) { // WRONG!!!
-    var actual = scoop(options)
+    requirePath(options)
       .then(function(modules) {
         expect(modules).to.be.an('object');
       })
@@ -24,7 +24,7 @@ describe("index", function() {
   });
 
   it("maps files to their require()'d module", function(done) { // WRONG!!!
-    var actual = scoop(options)
+    requirePath(options)
       .then(function(modules) {
         expect(modules['a.js']).to.equal(require('./fixtures/a.js'));
       })
@@ -33,7 +33,7 @@ describe("index", function() {
   });
 
   it('full integration test', function(done) {
-    var actual = scoop(options)
+    requirePath(options)
       .then(function(modules) {
         expect(modules['a.js']).to.equal(require('./fixtures/a.js'));
         expect(modules['aSpec.js']).to.be.undefined;
