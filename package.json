@@ -1,6 +1,7 @@
 {
   "name": "scoop",
   "version": "0.1.0",
+  "main": "lib/index.js",
   "description": "Require files from a directory tree",
   "scripts": {
     "test": "mocha --recursive",

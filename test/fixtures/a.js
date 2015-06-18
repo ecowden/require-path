@@ -1,1 +1,3 @@
-module.exports = "a.js";
+module.exports = {
+  component: "a.js"
+};
