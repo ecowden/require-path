@@ -13,7 +13,7 @@ requirePath({
   })
 
   // returns a standard promise
-  .then(function(modules) {
+  .then(function (modules) {
     // modules is a map of filenames to required components from those files
   })
 
