@@ -1,8 +1,8 @@
 {
-  "name": "scoop",
+  "name": "require-path",
   "version": "0.1.0",
   "main": "lib/index.js",
-  "description": "Require files from a directory tree",
+  "description": "Require files from a directory tree recursively",
   "scripts": {
     "test": "mocha --recursive",
     "autotest": "mocha --recursive -w",
