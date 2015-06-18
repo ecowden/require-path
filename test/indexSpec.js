@@ -8,13 +8,13 @@ var requirePath = require('../lib/index.js');
 
 describe("index", function() {
 
-  var options = { // api sketch
+  var options = {
     path: fixturePath,
-    include: ['**/*.js', '**/*.json'], // should be default,
+    include: ['**/*.js', '**/*.json'],
     exclude: ['**/*Spec.js']
   }
 
-  it('returns a promise that resolves to an object', function(done) { // WRONG!!!
+  it('returns a promise that resolves to an object', function(done) {
     requirePath(options)
       .then(function(modules) {
         expect(modules).to.be.an('object');
@@ -23,7 +23,7 @@ describe("index", function() {
       .catch(done);
   });
 
-  it("maps files to their require()'d module", function(done) { // WRONG!!!
+  it("maps files to their require()'d module", function(done) {
     requirePath(options)
       .then(function(modules) {
         expect(modules['a.js']).to.equal(require('./fixtures/a.js'));
