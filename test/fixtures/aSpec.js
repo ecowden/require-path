@@ -1,1 +1,1 @@
-module.exports = 'aSpec.js'
+module.exports = 'aSpec.js';

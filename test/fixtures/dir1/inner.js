@@ -1,1 +1,1 @@
-module.exports = "dir1/inner.js";
+module.exports = 'dir1/inner.js';

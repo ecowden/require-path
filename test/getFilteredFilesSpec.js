@@ -6,7 +6,7 @@ var _ = require('highland');
 var expect = require('chai').expect;
 var getFilteredFiles = require('../lib/getFilteredFiles.js');
 
-describe("getFilteredFiles", function() {
+describe('getFilteredFiles', function() {
 
   it('returns a Highland stream', function(done) {
     var actual = getFilteredFiles(testOptions({}));
@@ -91,6 +91,6 @@ describe("getFilteredFiles", function() {
     if (text.length > str.length) {
       return false;
     }
-    return str.indexOf(text) === (str.length - text.length)
+    return str.indexOf(text) === (str.length - text.length);
   }
 });
