@@ -1,6 +1,6 @@
 {
   "name": "require-path",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "lib/index.js",
   "description": "Require files from a directory tree recursively",
   "scripts": {
