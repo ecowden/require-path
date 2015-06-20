@@ -14,40 +14,73 @@ describe('getFilteredFiles', function() {
     actual.done(done);
   });
 
-  it('includes files that match the `include` option', function(done) {
-    var actual = getFilteredFiles(testOptions({
-      include: ['**/*.js']
-    }));
-    actual.filter(function(file) {
-      return endsWith(file, '.js');
-    }).toArray(function(files) {
-      expect(files.length).to.equal(3);
-      done();
+  describe('the `include` option', function() {
+
+
+    it('includes files that match', function(done) {
+      var actual = getFilteredFiles(testOptions({
+        include: ['**/*.js']
+      }));
+      actual.filter(function(file) {
+        return endsWith(file, '.js');
+      }).toArray(function(files) {
+        expect(files.length).to.equal(3);
+        done();
+      });
     });
+
+    it('excludes files that do not match', function(done) {
+      var actual = getFilteredFiles(testOptions({
+        include: ['**/*.js']
+      }));
+      actual.filter(function(file) {
+        return endsWith(file, '.junk');
+      }).toArray(function(files) {
+        expect(files.length).to.equal(0);
+        done();
+      });
+    });
+
+    it('accepts a single string', function(done) {
+      var actual = getFilteredFiles(testOptions({
+        include: '**/*.js'
+      }));
+      actual.filter(function(file) {
+        return endsWith(file, '.js');
+      }).toArray(function(files) {
+        expect(files.length).to.equal(3);
+        done();
+      });
+    });
+
   });
 
-  it('excludes files that are not included by the `include` option', function(done) {
-    var actual = getFilteredFiles(testOptions({
-      include: ['**/*.js']
-    }));
-    actual.filter(function(file) {
-      return endsWith(file, '.junk');
-    }).toArray(function(files) {
-      expect(files.length).to.equal(0);
-      done();
-    });
-  });
+  describe('the `exclude` option', function() {
 
-  it('excludes files listed in the `exclude` option', function(done) {
-    var actual = getFilteredFiles(testOptions({
-      include: ['**/*.js'],
-      exclude: ['**/*Spec.js']
-    }));
-    actual.filter(function(file) {
-      return endsWith(file, 'Spec.js');
-    }).toArray(function(files) {
-      expect(files.length).to.equal(0);
-      done();
+    it('excludes files listed', function(done) {
+      var actual = getFilteredFiles(testOptions({
+        include: ['**/*.js'],
+        exclude: ['**/*Spec.js']
+      }));
+      actual.filter(function(file) {
+        return endsWith(file, 'Spec.js');
+      }).toArray(function(files) {
+        expect(files.length).to.equal(0);
+        done();
+      });
+    });
+
+    it('accepts a single string', function(done) {
+      var actual = getFilteredFiles(testOptions({
+        include: ['**/*.js'],
+        exclude: '**/*Spec.js'
+      }));
+      actual.filter(function(file) {
+        return endsWith(file, 'Spec.js');
+      }).toArray(function(files) {
+        expect(files.length).to.equal(0);
+        done();
+      });
     });
   });
 
