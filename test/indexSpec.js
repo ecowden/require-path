@@ -30,6 +30,20 @@ describe('index', function() {
       .catch(done);
   });
 
+  it('accepts an array of paths', function(done) {
+    requirePath({
+        path: [path.join(fixturePath, 'dir1'), path.join(fixturePath, 'dir2')],
+        include: ['**/*.js', '**/*.json'],
+        exclude: ['**/*Spec.js']
+      })
+      .then(function(modules) {
+        expect(modules['innerA.js']).to.equal(require('./fixtures/dir1/innerA.js'));
+        expect(modules['innerB.js']).to.equal(require('./fixtures/dir2/innerB.js'));
+      })
+      .then(done)
+      .catch(done);
+  });
+
   it('full integration test', function(done) {
     requirePath(options)
       .then(function(modules) {
@@ -37,7 +51,8 @@ describe('index', function() {
         expect(modules['aSpec.js']).to.be.undefined;
         expect(modules['b.json']).to.equal(require('./fixtures/b.json'));
         expect(modules['c.junk']).to.be.undefined;
-        expect(modules['dir1/inner.js']).to.equal(require('./fixtures/dir1/inner.js'));
+        expect(modules['dir1/innerA.js']).to.equal(require('./fixtures/dir1/innerA.js'));
+        expect(modules['dir2/innerB.js']).to.equal(require('./fixtures/dir2/innerB.js'));
       })
       .then(done)
       .catch(done);
