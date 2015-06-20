@@ -3,6 +3,12 @@ Recursively `require(...)` files from a directory tree in Node.js
 
 Works with Node.js `v0.12.0` and above.
 
+| Branch        | Status        |
+| ------------- |:-------------:|
+| Master        | [![Build Status](https://travis-ci.org/ecowden/require-path.png?branch=master)](https://travis-ci.org/ecowden/require-path) |
+| All           | [![Build Status](https://travis-ci.org/ecowden/require-path.png)](https://travis-ci.org/ecowden/require-path) |
+
+
 ## Usage
 
 ```js
