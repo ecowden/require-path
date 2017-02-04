@@ -1,7 +1,7 @@
 # require-path
 Recursively `require(...)` files from a directory tree in Node.js
 
-Works with Node.js `v0.12.0` and above.
+Works with Node.js `v4.0.0` and above.
 
 | Branch        | Status        |
 | ------------- |:-------------:|
